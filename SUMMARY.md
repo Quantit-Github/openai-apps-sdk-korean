@@ -2,7 +2,6 @@
 layout: default
 title: Table of contents
 lang: en
-permalink: /SUMMARY.html
 ---
 
 # Table of contents
