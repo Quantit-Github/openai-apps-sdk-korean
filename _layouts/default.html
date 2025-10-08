@@ -345,7 +345,7 @@
     <header class="site-header">
         <a href="{{ site.baseurl }}/" class="site-title">Apps SDK</a>
         <nav class="site-nav">
-            <a href="{{ site.baseurl }}/SUMMARY{{ page.lang == 'ko' ? '.ko' : '' }}/" class="nav-link">📚 목차</a>
+            <a href="{{ site.baseurl }}/SUMMARY{% if page.lang == 'ko' %}.ko{% endif %}/" class="nav-link">📚 목차</a>
             <a href="https://github.com/{{ site.github_username }}/openai-apps-sdk-korean" class="nav-link">💻 GitHub</a>
             <div class="lang-switcher">
                 <button class="lang-btn" onclick="switchLanguage('ko')" id="ko-btn">🇰🇷</button>
@@ -356,18 +356,18 @@
 
     <div class="container">
         <aside class="sidebar">
-            <h3>{{ page.lang == 'ko' ? '목차' : 'Table of Contents' }}</h3>
+            <h3>{% if page.lang == 'ko' %}목차{% else %}Table of Contents{% endif %}</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}/">MCP Server</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{{ page.lang == 'ko' ? '.ko' : '' }}/">User Interaction</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{{ page.lang == 'ko' ? '.ko' : '' }}/">Design Guidelines</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">MCP Server</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{% if page.lang == 'ko' %}.ko{% endif %}/">User Interaction</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{% if page.lang == 'ko' %}.ko{% endif %}/">Design Guidelines</a></li>
             </ul>
 
-            <h3 style="margin-top: 20px;">{{ page.lang == 'ko' ? '빌드' : 'Build' }}</h3>
+            <h3 style="margin-top: 20px;">{% if page.lang == 'ko' %}빌드{% else %}Build{% endif %}</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/build/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}/">{{ page.lang == 'ko' ? '서버 설정' : 'Server Setup' }}</a></li>
-                <li><a href="{{ site.baseurl }}/build/custom-ux{{ page.lang == 'ko' ? '.ko' : '' }}/">{{ page.lang == 'ko' ? '커스텀 UX' : 'Custom UX' }}</a></li>
-                <li><a href="{{ site.baseurl }}/build/auth{{ page.lang == 'ko' ? '.ko' : '' }}/">{{ page.lang == 'ko' ? '인증' : 'Authentication' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}서버 설정{% else %}Server Setup{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/custom-ux{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}커스텀 UX{% else %}Custom UX{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/auth{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}인증{% else %}Authentication{% endif %}</a></li>
             </ul>
         </aside>
 
