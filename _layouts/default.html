@@ -356,18 +356,47 @@
 
     <div class="container">
         <aside class="sidebar">
-            <h3>{% if page.lang == 'ko' %}목차{% else %}Table of Contents{% endif %}</h3>
+            <h3>{% if page.lang == 'ko' %}핵심 개념{% else %}Core Concepts{% endif %}</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">MCP Server</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{% if page.lang == 'ko' %}.ko{% endif %}/">User Interaction</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{% if page.lang == 'ko' %}.ko{% endif %}/">Design Guidelines</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}MCP 서버{% else %}MCP Server{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}사용자 상호작용{% else %}User Interaction{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}디자인 가이드라인{% else %}Design Guidelines{% endif %}</a></li>
             </ul>
 
-            <h3 style="margin-top: 20px;">{% if page.lang == 'ko' %}빌드{% else %}Build{% endif %}</h3>
+            <h3 style="margin-top: 20px;">Plan</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/build/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}서버 설정{% else %}Server Setup{% endif %}</a></li>
-                <li><a href="{{ site.baseurl }}/build/custom-ux{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}커스텀 UX{% else %}Custom UX{% endif %}</a></li>
-                <li><a href="{{ site.baseurl }}/build/auth{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}인증{% else %}Authentication{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/plan/use-case{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}사용 사례 조사{% else %}Research Use Cases{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/plan/tools{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}도구 정의{% else %}Define Tools{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/plan/components{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}컴포넌트 디자인{% else %}Design Components{% endif %}</a></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">Build</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/build/mcp-server{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}서버 설정{% else %}Set up your server{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/custom-ux{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}커스텀 UX 빌드{% else %}Build a Custom UX{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/auth{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}사용자 인증{% else %}Authenticate Users{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/storage{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}상태 유지{% else %}Persist State{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/build/examples{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}예제{% else %}Examples{% endif %}</a></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">Deploy</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/deploy/deploy{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}앱 배포{% else %}Deploy Your App{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/deploy/connect-chatgpt{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}ChatGPT에서 연결{% else %}Connect from ChatGPT{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/deploy/testing{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}통합 테스트{% else %}Test Your Integration{% endif %}</a></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">{% if page.lang == 'ko' %}가이드{% else %}Guides{% endif %}</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/guides/optimize-metadata{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}메타데이터 최적화{% else %}Optimize Metadata{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/guides/security-privacy{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}보안 및 개인정보{% else %}Security & Privacy{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/guides/troubleshooting{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}문제 해결{% else %}Troubleshooting{% endif %}</a></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">{% if page.lang == 'ko' %}리소스{% else %}Resources{% endif %}</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/resources/reference{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}레퍼런스{% else %}Reference{% endif %}</a></li>
+                <li><a href="{{ site.baseurl }}/resources/app-developer-guidelines{% if page.lang == 'ko' %}.ko{% endif %}/">{% if page.lang == 'ko' %}앱 개발자 가이드라인{% else %}App Developer Guidelines{% endif %}</a></li>
             </ul>
         </aside>
 
