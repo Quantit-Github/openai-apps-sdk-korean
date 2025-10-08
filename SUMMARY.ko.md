@@ -2,6 +2,7 @@
 layout: default
 title: 목차
 lang: ko
+permalink: /SUMMARY.ko.html
 ---
 
 # 목차
