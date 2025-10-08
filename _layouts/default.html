@@ -345,7 +345,7 @@
     <header class="site-header">
         <a href="{{ site.baseurl }}/" class="site-title">Apps SDK</a>
         <nav class="site-nav">
-            <a href="{{ site.baseurl }}/SUMMARY{{ page.lang == 'ko' ? '.ko' : '' }}.md" class="nav-link">📚 목차</a>
+            <a href="{{ site.baseurl }}/SUMMARY{{ page.lang == 'ko' ? '.ko' : '' }}.html" class="nav-link">📚 목차</a>
             <a href="https://github.com/{{ site.github_username }}/openai-apps-sdk-korean" class="nav-link">💻 GitHub</a>
             <div class="lang-switcher">
                 <button class="lang-btn" onclick="switchLanguage('ko')" id="ko-btn">🇰🇷</button>
@@ -358,16 +358,16 @@
         <aside class="sidebar">
             <h3>{{ page.lang == 'ko' ? '목차' : 'Table of Contents' }}</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.md">MCP Server</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{{ page.lang == 'ko' ? '.ko' : '' }}.md">User Interaction</a></li>
-                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{{ page.lang == 'ko' ? '.ko' : '' }}.md">Design Guidelines</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.html">MCP Server</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{{ page.lang == 'ko' ? '.ko' : '' }}.html">User Interaction</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{{ page.lang == 'ko' ? '.ko' : '' }}.html">Design Guidelines</a></li>
             </ul>
 
             <h3 style="margin-top: 20px;">{{ page.lang == 'ko' ? '빌드' : 'Build' }}</h3>
             <ul>
-                <li><a href="{{ site.baseurl }}/build/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '서버 설정' : 'Server Setup' }}</a></li>
-                <li><a href="{{ site.baseurl }}/build/custom-ux{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '커스텀 UX' : 'Custom UX' }}</a></li>
-                <li><a href="{{ site.baseurl }}/build/auth{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '인증' : 'Authentication' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.html">{{ page.lang == 'ko' ? '서버 설정' : 'Server Setup' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/custom-ux{{ page.lang == 'ko' ? '.ko' : '' }}.html">{{ page.lang == 'ko' ? '커스텀 UX' : 'Custom UX' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/auth{{ page.lang == 'ko' ? '.ko' : '' }}.html">{{ page.lang == 'ko' ? '인증' : 'Authentication' }}</a></li>
             </ul>
         </aside>
 
@@ -393,13 +393,13 @@
             let newPath;
 
             if (lang === 'ko') {
-                if (currentPath.endsWith('.md')) {
-                    newPath = currentPath.replace('.md', '.ko.md');
-                } else if (!currentPath.endsWith('.ko.md')) {
-                    newPath = currentPath + '.ko.md';
+                if (currentPath.endsWith('.html')) {
+                    newPath = currentPath.replace('.html', '.ko.html');
+                } else if (!currentPath.endsWith('.ko.html')) {
+                    newPath = currentPath + '.ko.html';
                 }
             } else {
-                newPath = currentPath.replace('.ko.md', '.md');
+                newPath = currentPath.replace('.ko.html', '.html');
             }
 
             if (newPath) {
@@ -408,7 +408,7 @@
         }
 
         // Set active language button
-        const isKorean = window.location.pathname.includes('.ko.md');
+        const isKorean = window.location.pathname.includes('.ko.html');
         document.getElementById(isKorean ? 'ko-btn' : 'en-btn').classList.add('active');
     </script>
 </body>

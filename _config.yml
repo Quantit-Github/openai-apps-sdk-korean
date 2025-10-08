@@ -17,6 +17,9 @@ kramdown:
     block:
       line_numbers: false
 
+# Permalink settings
+permalink: pretty
+
 # Exclude from processing
 exclude:
   - .git
