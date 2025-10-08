@@ -31,7 +31,6 @@ yarn-error.log*
 
 # Build outputs
 dist/
-build/
 
 # Temporary files
 *.tmp

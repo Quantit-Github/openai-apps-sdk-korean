@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="{{ page.lang | default: site.lang | default: 'ko' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{{ page.description | default: site.description }}">
+    <title>{{ page.title | default: site.title }}</title>
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+
+    <style>
+        :root {
+            --primary-color: #667eea;
+            --secondary-color: #764ba2;
+            --text-color: #333;
+            --bg-color: #ffffff;
+            --code-bg: #f5f7fa;
+            --border-color: #e1e4e8;
+            --link-color: #667eea;
+            --hover-color: #5568d3;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background: #f8f9fa;
+            padding-top: 60px;
+        }
+
+        /* Header */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+            color: white;
+            padding: 15px 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .site-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+        }
+
+        .site-nav {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: white;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: background 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-switcher {
+            display: flex;
+            gap: 5px;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: 1px solid white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .lang-btn:hover,
+        .lang-btn.active {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 30px;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 80px;
+            height: fit-content;
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .sidebar h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar li {
+            margin: 8px 0;
+        }
+
+        .sidebar a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .sidebar a:hover {
+            color: var(--primary-color);
+            padding-left: 5px;
+        }
+
+        /* Content */
+        .content {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            min-height: 80vh;
+        }
+
+        /* Markdown Styles */
+        .markdown-body h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+            color: var(--primary-color);
+        }
+
+        .markdown-body h2 {
+            font-size: 2rem;
+            margin-top: 40px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .markdown-body h3 {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 12px;
+            color: var(--text-color);
+        }
+
+        .markdown-body h4 {
+            font-size: 1.2rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+        }
+
+        .markdown-body p {
+            margin-bottom: 16px;
+            line-height: 1.8;
+        }
+
+        .markdown-body ul,
+        .markdown-body ol {
+            margin-bottom: 16px;
+            padding-left: 30px;
+        }
+
+        .markdown-body li {
+            margin-bottom: 8px;
+        }
+
+        .markdown-body a {
+            color: var(--link-color);
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s;
+        }
+
+        .markdown-body a:hover {
+            border-bottom-color: var(--link-color);
+        }
+
+        .markdown-body code {
+            background: var(--code-bg);
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        }
+
+        .markdown-body pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+
+        .markdown-body pre code {
+            background: none;
+            padding: 0;
+            color: inherit;
+        }
+
+        .markdown-body blockquote {
+            border-left: 4px solid var(--primary-color);
+            padding-left: 20px;
+            margin: 20px 0;
+            color: #666;
+            font-style: italic;
+        }
+
+        .markdown-body table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .markdown-body th,
+        .markdown-body td {
+            padding: 12px;
+            border: 1px solid var(--border-color);
+            text-align: left;
+        }
+
+        .markdown-body th {
+            background: var(--code-bg);
+            font-weight: 600;
+        }
+
+        .markdown-body img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .markdown-body hr {
+            border: none;
+            border-top: 2px solid var(--border-color);
+            margin: 40px 0;
+        }
+
+        /* Hint boxes (for {% hint %} syntax) */
+        .markdown-body .hint {
+            padding: 15px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            border-left: 4px solid;
+        }
+
+        .markdown-body .hint.info {
+            background: #e7f3ff;
+            border-color: #2196F3;
+            color: #0d47a1;
+        }
+
+        .markdown-body .hint.warning {
+            background: #fff3cd;
+            border-color: #ffc107;
+            color: #856404;
+        }
+
+        .markdown-body .hint.danger {
+            background: #f8d7da;
+            border-color: #dc3545;
+            color: #721c24;
+        }
+
+        .markdown-body .hint.success {
+            background: #d4edda;
+            border-color: #28a745;
+            color: #155724;
+        }
+
+        /* Footer */
+        .site-footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: 20px;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .site-nav {
+                gap: 10px;
+            }
+
+            .nav-link {
+                font-size: 0.8rem;
+                padding: 6px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <a href="{{ site.baseurl }}/" class="site-title">Apps SDK</a>
+        <nav class="site-nav">
+            <a href="{{ site.baseurl }}/SUMMARY{{ page.lang == 'ko' ? '.ko' : '' }}.md" class="nav-link">📚 목차</a>
+            <a href="https://github.com/{{ site.github_username }}/openai-apps-sdk-korean" class="nav-link">💻 GitHub</a>
+            <div class="lang-switcher">
+                <button class="lang-btn" onclick="switchLanguage('ko')" id="ko-btn">🇰🇷</button>
+                <button class="lang-btn" onclick="switchLanguage('en')" id="en-btn">🇺🇸</button>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container">
+        <aside class="sidebar">
+            <h3>{{ page.lang == 'ko' ? '목차' : 'Table of Contents' }}</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/core-concepts/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.md">MCP Server</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/user-interaction{{ page.lang == 'ko' ? '.ko' : '' }}.md">User Interaction</a></li>
+                <li><a href="{{ site.baseurl }}/core-concepts/design-guidelines{{ page.lang == 'ko' ? '.ko' : '' }}.md">Design Guidelines</a></li>
+            </ul>
+
+            <h3 style="margin-top: 20px;">{{ page.lang == 'ko' ? '빌드' : 'Build' }}</h3>
+            <ul>
+                <li><a href="{{ site.baseurl }}/build/mcp-server{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '서버 설정' : 'Server Setup' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/custom-ux{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '커스텀 UX' : 'Custom UX' }}</a></li>
+                <li><a href="{{ site.baseurl }}/build/auth{{ page.lang == 'ko' ? '.ko' : '' }}.md">{{ page.lang == 'ko' ? '인증' : 'Authentication' }}</a></li>
+            </ul>
+        </aside>
+
+        <main class="content markdown-body">
+            {{ content }}
+        </main>
+    </div>
+
+    <footer class="site-footer">
+        <p>&copy; 2025 OpenAI Apps SDK Documentation</p>
+        <p style="margin-top: 10px;">
+            <a href="https://github.com/openai/openai-apps-sdk-examples" style="color: var(--link-color);">GitHub Repository</a>
+        </p>
+    </footer>
+
+    <!-- Syntax Highlighting -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
+
+    <script>
+        function switchLanguage(lang) {
+            const currentPath = window.location.pathname;
+            let newPath;
+
+            if (lang === 'ko') {
+                if (currentPath.endsWith('.md')) {
+                    newPath = currentPath.replace('.md', '.ko.md');
+                } else if (!currentPath.endsWith('.ko.md')) {
+                    newPath = currentPath + '.ko.md';
+                }
+            } else {
+                newPath = currentPath.replace('.ko.md', '.md');
+            }
+
+            if (newPath) {
+                window.location.href = newPath;
+            }
+        }
+
+        // Set active language button
+        const isKorean = window.location.pathname.includes('.ko.md');
+        document.getElementById(isKorean ? 'ko-btn' : 'en-btn').classList.add('active');
+    </script>
+</body>
+</html>

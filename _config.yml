@@ -1,0 +1,71 @@
+# Site settings
+title: Apps SDK Documentation
+description: Framework to build apps for ChatGPT
+author: OpenAI
+url: https://quantit-github.github.io
+baseurl: /openai-apps-sdk-korean
+
+# Build settings
+markdown: kramdown
+highlighter: rouge
+
+# Markdown settings
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Exclude from processing
+exclude:
+  - .git
+  - .gitignore
+  - .claude
+  - crawler.js
+  - add-frontmatter.js
+  - DEPLOY.md
+  - MARKDOWN-GUIDE.md
+  - node_modules
+  - vendor
+  - README.md.backup
+  - Gemfile
+  - Gemfile.lock
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Collections
+collections:
+  docs:
+    output: true
+    permalink: /:path/
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "*.ko.md"
+    values:
+      lang: ko
+  - scope:
+      path: "*.md"
+    values:
+      lang: en
+
+# SEO
+lang: ko
+logo: /assets/logo.png
+
+# Social
+github_username: quantit-github
+
+# Analytics (optional)
+# google_analytics: UA-XXXXXXXXX-X
